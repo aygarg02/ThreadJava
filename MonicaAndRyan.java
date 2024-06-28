@@ -15,13 +15,14 @@ private    BankAccount account=new BankAccount();
     }
 
     @Override
-    public void run() {
+    synchronized public void run() {
      for(int i=0;i<20;i++){   
         System.out.print(account.balance()+" "+Thread.currentThread().getName()+" <--sthis is the owner name");
        if( account.balance()>20){
         account.withdraw(20);
         System.out.println(Thread.currentThread().getName()+" name of the thread   "+account.balance());
        }
+       System.out.println();
     }
     }
 
